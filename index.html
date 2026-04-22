@@ -1,368 +1,213 @@
-<!DOCTYPE html>
+<style>
+  * {
+    box-sizing: border-box;
+  }
 
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Leitor CSV - Dados Abertos</title>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+  body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #081220 0%, #0f1f38 55%, #12345a 100%);
+    color: #ffffff;
+    line-height: 1.6;
+  }
 
-```
-body {
-  margin: 0;
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: linear-gradient(135deg, #0b1220, #13233d);
-  color: #ffffff;
-  line-height: 1.6;
-}
+  .container {
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
 
-.container {
-  width: 100%;
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
+  .hero {
+    padding: 70px 0 50px;
+    text-align: center;
+  }
 
-.hero {
-  padding: 60px 0 40px;
-  text-align: center;
-}
+  .logo {
+    width: 180px;
+    max-width: 80%;
+    border-radius: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+  }
 
-.logo {
-  width: 180px;
-  max-width: 80%;
-  border-radius: 24px;
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
-  margin-bottom: 24px;
-}
-
-h1, h2, h3 {
-  margin-top: 0;
-}
-
-.hero h1 {
-  font-size: 42px;
-  line-height: 1.15;
-  margin-bottom: 18px;
-}
-
-.hero p {
-  max-width: 820px;
-  margin: 0 auto 14px;
-  font-size: 19px;
-  color: #d4def0;
-}
-
-.highlight {
-  color: #34d399;
-  font-weight: 700;
-}
-
-.btn {
-  display: inline-block;
-  margin-top: 24px;
-  background: #22c55e;
-  color: #fff;
-  text-decoration: none;
-  padding: 16px 32px;
-  border-radius: 12px;
-  font-weight: 700;
-  font-size: 18px;
-  transition: transform .2s ease, background .2s ease;
-}
-
-.btn:hover {
-  background: #16a34a;
-  transform: translateY(-2px);
-}
-
-.section {
-  padding: 32px 0;
-}
-
-.section-title {
-  text-align: center;
-  font-size: 32px;
-  margin-bottom: 24px;
-}
-
-.section-subtitle {
-  text-align: center;
-  max-width: 850px;
-  margin: 0 auto 30px;
-  color: #c5d1e7;
-  font-size: 18px;
-}
-
-.grid-2 {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 18px;
-}
-
-.grid-3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-}
-
-.card {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  padding: 22px;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
-}
-
-.card h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-.card p {
-  margin: 0;
-  color: #d8e1f0;
-}
-
-.list-card {
-  background: rgba(255, 255, 255, 0.06);
-  border-radius: 16px;
-  padding: 24px;
-  margin-bottom: 16px;
-  border: 1px solid rgba(255,255,255,0.08);
-}
-
-.problem-box {
-  background: linear-gradient(135deg, rgba(239,68,68,0.18), rgba(255,255,255,0.05));
-  border: 1px solid rgba(239,68,68,0.28);
-}
-
-.solution-box {
-  background: linear-gradient(135deg, rgba(34,197,94,0.18), rgba(255,255,255,0.05));
-  border: 1px solid rgba(34,197,94,0.28);
-}
-
-.price-box {
-  text-align: center;
-  background: linear-gradient(135deg, rgba(34,197,94,0.14), rgba(255,255,255,0.05));
-  border: 1px solid rgba(34,197,94,0.28);
-  border-radius: 18px;
-  padding: 30px 20px;
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.price {
-  font-size: 48px;
-  font-weight: 800;
-  color: #34d399;
-  margin: 10px 0;
-}
-
-.small {
-  color: #cbd5e1;
-  font-size: 15px;
-}
-
-.cta-final {
-  text-align: center;
-  padding-bottom: 60px;
-}
-
-.badge-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  margin-top: 18px;
-}
-
-.badge {
-  padding: 10px 14px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.08);
-  font-size: 14px;
-  color: #dce6f7;
-  border: 1px solid rgba(255,255,255,0.08);
-}
-
-@media (max-width: 900px) {
-  .grid-2, .grid-3 {
-    grid-template-columns: 1fr;
+  h1, h2, h3 {
+    margin-top: 0;
   }
 
   .hero h1 {
-    font-size: 34px;
+    font-size: 48px;
+    line-height: 1.12;
+    margin-bottom: 18px;
+    color: #ffffff;
+  }
+
+  .hero p {
+    max-width: 860px;
+    margin: 0 auto 14px;
+    font-size: 20px;
+    color: #d9e2ec;
+  }
+
+  .highlight {
+    color: #34d399;
+    font-weight: 700;
+  }
+
+  .btn {
+    display: inline-block;
+    margin-top: 24px;
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: #ffffff;
+    text-decoration: none;
+    padding: 16px 34px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 18px;
+    transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    box-shadow: 0 12px 30px rgba(34, 197, 94, 0.25);
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 36px rgba(34, 197, 94, 0.35);
+  }
+
+  .section {
+    padding: 34px 0;
   }
 
   .section-title {
-    font-size: 28px;
+    text-align: center;
+    font-size: 34px;
+    margin-bottom: 18px;
+    color: #ffffff;
+  }
+
+  .section-subtitle {
+    text-align: center;
+    max-width: 860px;
+    margin: 0 auto 30px;
+    color: #d9e2ec;
+    font-size: 18px;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+
+  .card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    padding: 22px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.20);
+    backdrop-filter: blur(4px);
+  }
+
+  .card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #ffffff;
+  }
+
+  .card p {
+    margin: 0;
+    color: #d9e2ec;
+  }
+
+  .list-card {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #ffffff;
+  }
+
+  .problem-box {
+    background: linear-gradient(135deg, rgba(239,68,68,0.18), rgba(255,255,255,0.05));
+    border: 1px solid rgba(239,68,68,0.28);
+  }
+
+  .solution-box {
+    background: linear-gradient(135deg, rgba(34,197,94,0.18), rgba(255,255,255,0.05));
+    border: 1px solid rgba(34,197,94,0.28);
+  }
+
+  .price-box {
+    text-align: center;
+    background: linear-gradient(135deg, rgba(34,197,94,0.14), rgba(255,255,255,0.06));
+    border: 1px solid rgba(34,197,94,0.28);
+    border-radius: 18px;
+    padding: 30px 20px;
+    max-width: 700px;
+    margin: 0 auto;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
   }
 
   .price {
-    font-size: 40px;
+    font-size: 50px;
+    font-weight: 800;
+    color: #34d399;
+    margin: 10px 0;
   }
-}
-```
 
-  </style>
-</head>
-<body>
+  .small {
+    color: #d9e2ec;
+    font-size: 15px;
+  }
 
-  <div class="container">
+  .cta-final {
+    text-align: center;
+    padding-bottom: 70px;
+  }
 
-```
-<section class="hero">
-  <img src="logo.png" alt="Logo Leitor CSV Dados Abertos" class="logo">
+  .badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 18px;
+  }
 
-  <h1>Transforme <span class="highlight">dados abertos do governo</span> em planilhas organizadas e prontas para análise</h1>
+  .badge {
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.10);
+    font-size: 14px;
+    color: #ffffff;
+    border: 1px solid rgba(255,255,255,0.12);
+  }
 
-  <p>Muitos arquivos públicos são disponibilizados em CSV, mas na prática eles costumam ser difíceis de abrir, interpretar e trabalhar no Excel.</p>
-  <p>O <span class="highlight">Leitor CSV - Dados Abertos</span> foi criado para resolver exatamente esse problema de forma simples, rápida e acessível.</p>
+  @media (max-width: 900px) {
+    .grid-2, .grid-3 {
+      grid-template-columns: 1fr;
+    }
 
-  <a href="#" class="btn">QUERO ACESSAR AGORA</a>
+    .hero h1 {
+      font-size: 34px;
+    }
 
-  <div class="badge-row">
-    <span class="badge">Funciona offline</span>
-    <span class="badge">Exporta para Excel</span>
-    <span class="badge">Leitura facilitada de CSV</span>
-    <span class="badge">Ideal para dados públicos</span>
-  </div>
-</section>
+    .section-title {
+      font-size: 28px;
+    }
 
-<section class="section">
-  <h2 class="section-title">O problema não é faltar dado. O problema é conseguir usar o dado.</h2>
-  <p class="section-subtitle">
-    O governo publica uma enorme quantidade de informações relevantes. Mas, para muita gente, o acesso prático a esses dados para análise é frustrante logo no primeiro passo.
-  </p>
+    .price {
+      font-size: 40px;
+    }
 
-  <div class="grid-2">
-    <div class="card problem-box">
-      <h3>Você encontra o arquivo, mas não consegue trabalhar com ele</h3>
-      <p>O CSV até foi disponibilizado, mas quando você abre no Excel, o conteúdo aparece todo em uma única coluna ou com formatação confusa.</p>
-    </div>
-
-    <div class="card problem-box">
-      <h3>O dado existe, mas não está acessível para a maioria das pessoas</h3>
-      <p>Quem não domina tratamento de dados perde tempo, se irrita e muitas vezes desiste da análise antes mesmo de começar.</p>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <h2 class="section-title">Com este software, o CSV deixa de ser uma barreira</h2>
-  <p class="section-subtitle">
-    O Leitor CSV - Dados Abertos transforma um arquivo técnico e pouco amigável em uma tabela visual, navegável e muito mais fácil de utilizar.
-  </p>
-
-  <div class="grid-3">
-    <div class="card solution-box">
-      <h3>Detecção automática</h3>
-      <p>Identifica codificação e separador do arquivo para abrir os dados corretamente.</p>
-    </div>
-
-    <div class="card solution-box">
-      <h3>Visualização organizada</h3>
-      <p>Exibe as colunas de forma estruturada, facilitando leitura, busca e conferência.</p>
-    </div>
-
-    <div class="card solution-box">
-      <h3>Exportação prática</h3>
-      <p>Salva em Excel ou em CSV compatível com o Excel, evitando o problema da coluna única.</p>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <h2 class="section-title">O que você pode fazer com ele</h2>
-
-  <div class="list-card">
-    ✔ Fazer upload de arquivos CSV e TXT de dados abertos
-  </div>
-  <div class="list-card">
-    ✔ Visualizar o conteúdo em formato de tabela
-  </div>
-  <div class="list-card">
-    ✔ Filtrar informações rapidamente
-  </div>
-  <div class="list-card">
-    ✔ Abrir links presentes nas colunas de link
-  </div>
-  <div class="list-card">
-    ✔ Excluir linhas e colunas antes de exportar
-  </div>
-  <div class="list-card">
-    ✔ Exportar para Excel com poucos cliques
-  </div>
-</section>
-
-<section class="section">
-  <h2 class="section-title">Para quem este software é ideal</h2>
-
-  <div class="grid-2">
-    <div class="card">
-      <h3>Profissionais do Direito e controle social</h3>
-      <p>Advogados, pesquisadores, jornalistas, assessores e cidadãos que precisam acessar dados públicos com mais autonomia.</p>
-    </div>
-
-    <div class="card">
-      <h3>Analistas, contadores e servidores</h3>
-      <p>Pessoas que trabalham com relatórios, fiscalização, auditoria, conferência de informações e análise documental.</p>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <h2 class="section-title">O ganho real é economizar tempo e reduzir frustração</h2>
-
-  <div class="grid-3">
-    <div class="card">
-      <h3>Mais produtividade</h3>
-      <p>Você deixa de perder tempo tentando “consertar” o arquivo manualmente.</p>
-    </div>
-
-    <div class="card">
-      <h3>Mais acessibilidade</h3>
-      <p>Os dados públicos ficam mais utilizáveis para quem não é técnico em tratamento de dados.</p>
-    </div>
-
-    <div class="card">
-      <h3>Mais resultado</h3>
-      <p>Você chega mais rápido à etapa que importa: leitura, análise e tomada de decisão.</p>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <h2 class="section-title">Acesso imediato</h2>
-
-  <div class="price-box">
-    <p>Pagamento único. Sem mensalidade.</p>
-    <div class="price">R$ 29,90</div>
-    <p class="small">Instale, abra seus arquivos e comece a trabalhar melhor com dados abertos agora mesmo.</p>
-    <a href="#" class="btn">COMPRAR AGORA</a>
-  </div>
-</section>
-
-<section class="section">
-  <h2 class="section-title">Garantia</h2>
-
-  <div class="card center">
-    Você tem 7 dias para testar. Se não ficar satisfeito, pode solicitar o reembolso dentro do prazo.
-  </div>
-</section>
-
-<section class="cta-final">
-  <h2 class="section-title">Se o dado é público, o acesso também precisa ser prático</h2>
-  <p class="section-subtitle">Pare de perder tempo tentando abrir arquivos difíceis. Use uma ferramenta feita para transformar dados públicos em informação utilizável.</p>
-  <a href="#" class="btn">QUERO MEU ACESSO</a>
-</section>
-```
-
-  </div>
-
-</body>
-</html>
+    .hero p,
+    .section-subtitle {
+      font-size: 17px;
+    }
+  }
+</style>
